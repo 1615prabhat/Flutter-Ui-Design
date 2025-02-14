@@ -1,4 +1,5 @@
 import 'package:demo/rooms/BedRoom.dart';
+import 'package:demo/rooms/Kitchen.dart';
 import 'package:demo/rooms/LivingRoom.dart';
 import 'package:flutter/material.dart';
 import 'AddSection.dart';
@@ -226,47 +227,56 @@ class _HomeState extends State<Home> {
                       ],
                     ),
                   ),
-                  Container(
-                    padding: const EdgeInsets.all(8),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        color: Colors.white),
-                    // child: Padding(
-                    //   padding: const EdgeInsets.only(left: 10),
-                    child: Column(
-                      children: [
-                        Text(
-                          'Kitchen',
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 22),
-                          child: Text(
-                            "Kitchen Room is used for cooking purpose",
-                            style: TextStyle(
-                                fontSize: 10, color: Colors.grey[400]),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Kitchen(),
+                          ));
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5),
+                          color: Colors.white),
+                      // child: Padding(
+                      //   padding: const EdgeInsets.only(left: 10),
+                      child: Column(
+                        children: [
+                          Text(
+                            'Kitchen',
+                            style: TextStyle(fontWeight: FontWeight.bold),
                           ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Text(
-                            "4 Devices",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.deepOrange),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 22),
+                            child: Text(
+                              "Kitchen Room is used for cooking purpose",
+                              style: TextStyle(
+                                  fontSize: 10, color: Colors.grey[400]),
+                            ),
                           ),
-                        ),
-                        Switch(
-                          activeColor: Colors.deepOrange,
-                          value: light3,
-                          onChanged: (bool value) {
-                            // This is called when the user toggles the switch.
-                            setState(() {
-                              light3 = value;
-                            });
-                          },
-                        )
-                      ],
+                          Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Text(
+                              "4 Devices",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.deepOrange),
+                            ),
+                          ),
+                          Switch(
+                            activeColor: Colors.deepOrange,
+                            value: light3,
+                            onChanged: (bool value) {
+                              // This is called when the user toggles the switch.
+                              setState(() {
+                                light3 = value;
+                              });
+                            },
+                          )
+                        ],
+                      ),
                     ),
                   ),
                   Container(
