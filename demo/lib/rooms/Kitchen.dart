@@ -13,6 +13,10 @@ class _KitchenState extends State<Kitchen> {
   bool acOn = true;
   bool fridgeOn = true;
   bool cctvOn = false;
+  bool microwaveOn = false;
+  bool coffeeMakerOn = true;
+  bool dishwasherOn = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +27,7 @@ class _KitchenState extends State<Kitchen> {
           Container(
             padding: EdgeInsets.symmetric(horizontal: 20, vertical: 40),
             decoration: BoxDecoration(
-              color: Colors.orange,
+              color: Colors.deepOrangeAccent,
               borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(40),
                 bottomRight: Radius.circular(40),
@@ -57,7 +61,7 @@ class _KitchenState extends State<Kitchen> {
                   ),
                 ),
                 Text(
-                  "Kitchen is used for the cookin purpose",
+                  "Kitchen is used for the cooking purpose",
                   style: TextStyle(color: Colors.white70),
                 ),
                 SizedBox(height: 20),
@@ -66,7 +70,6 @@ class _KitchenState extends State<Kitchen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    // **Temperature Card**
                     Container(
                       padding: EdgeInsets.all(15),
                       decoration: BoxDecoration(
@@ -84,8 +87,6 @@ class _KitchenState extends State<Kitchen> {
                         ],
                       ),
                     ),
-
-                    // **Humidity Card**
                     Container(
                       padding: EdgeInsets.all(15),
                       decoration: BoxDecoration(
@@ -111,72 +112,202 @@ class _KitchenState extends State<Kitchen> {
 
           SizedBox(height: 20),
 
-          // **Devices List**
+          // **Devices List with Scroll Feature**
           Expanded(
-            child: ListView(
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              children: [
-                _buildDeviceTile(
-                    "Lamp", "85% Brightness", Icons.lightbulb, lampOn, (val) {
-                  setState(() => lampOn = val);
-                }),
-                _buildDeviceTile("TV", "51% Volume", Icons.tv, tvOn, (val) {
-                  setState(() => tvOn = val);
-                }),
-                _buildDeviceTile(
-                    "Air Conditioner", "24°C Temperature", Icons.ac_unit, acOn,
-                    (val) {
-                  setState(() => acOn = val);
-                }),
-                _buildDeviceTile(
-                    "Fridge", "5°C Temperature", Icons.kitchen, fridgeOn,
-                    (val) {
-                  setState(() => fridgeOn = val);
-                }),
-                _buildDeviceTile(
-                    "CCTV Cam.", "Left/Right: 36.4°", Icons.videocam, cctvOn,
-                    (val) {
-                  setState(() => cctvOn = val);
-                }),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  // **Reusable Device Tile**
-  Widget _buildDeviceTile(String title, String subtitle, IconData icon,
-      bool value, Function(bool) onChanged) {
-    return Container(
-      margin: EdgeInsets.only(bottom: 15),
-      padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(15),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Row(
-            children: [
-              Icon(icon, color: Colors.orange, size: 30),
-              SizedBox(width: 15),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+            child: SingleChildScrollView(
+              child: Column(
                 children: [
-                  Text(title, style: TextStyle(fontWeight: FontWeight.bold)),
-                  Text(subtitle,
-                      style: TextStyle(fontSize: 12, color: Colors.grey)),
+                  Container(
+                    margin: EdgeInsets.only(bottom: 15, left: 20, right: 20),
+                    padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            Icon(Icons.lightbulb,
+                                color: Colors.orange, size: 30),
+                            SizedBox(width: 15),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text("Lamp",
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold)),
+                                Text("85% Brightness",
+                                    style: TextStyle(
+                                        fontSize: 12, color: Colors.grey)),
+                              ],
+                            ),
+                          ],
+                        ),
+                        Switch(
+                          value: lampOn,
+                          activeColor: Colors.orange,
+                          onChanged: (val) {
+                            setState(() => lampOn = val);
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(bottom: 15, left: 20, right: 20),
+                    padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            Icon(Icons.tv, color: Colors.orange, size: 30),
+                            SizedBox(width: 15),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text("TV",
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold)),
+                                Text("51% Volume",
+                                    style: TextStyle(
+                                        fontSize: 12, color: Colors.grey)),
+                              ],
+                            ),
+                          ],
+                        ),
+                        Switch(
+                          value: tvOn,
+                          activeColor: Colors.orange,
+                          onChanged: (val) {
+                            setState(() => tvOn = val);
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(bottom: 15, left: 20, right: 20),
+                    padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            Icon(Icons.ac_unit, color: Colors.orange, size: 30),
+                            SizedBox(width: 15),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text("Air Conditioner",
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold)),
+                                Text("24°C Temperature",
+                                    style: TextStyle(
+                                        fontSize: 12, color: Colors.grey)),
+                              ],
+                            ),
+                          ],
+                        ),
+                        Switch(
+                          value: acOn,
+                          activeColor: Colors.orange,
+                          onChanged: (val) {
+                            setState(() => acOn = val);
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(bottom: 15, left: 20, right: 20),
+                    padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            Icon(Icons.kitchen_sharp,
+                                color: Colors.orange, size: 30),
+                            SizedBox(width: 15),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text("Fridge",
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold)),
+                                Text("5°C Temperature",
+                                    style: TextStyle(
+                                        fontSize: 12, color: Colors.grey)),
+                              ],
+                            ),
+                          ],
+                        ),
+                        Switch(
+                          value: fridgeOn,
+                          activeColor: Colors.orange,
+                          onChanged: (val) {
+                            setState(() => fridgeOn = val);
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(bottom: 15, left: 20, right: 20),
+                    padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            Icon(Icons.camera_enhance,
+                                color: Colors.orange, size: 30),
+                            SizedBox(width: 15),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text("CCTV CAM",
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold)),
+                                Text("View Only",
+                                    style: TextStyle(
+                                        fontSize: 12, color: Colors.grey)),
+                              ],
+                            ),
+                          ],
+                        ),
+                        Switch(
+                          value: fridgeOn,
+                          activeColor: Colors.orange,
+                          onChanged: (val) {
+                            setState(() => fridgeOn = val);
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
-            ],
-          ),
-          Switch(
-            value: value,
-            activeColor: Colors.orange,
-            onChanged: onChanged,
+            ),
           ),
         ],
       ),

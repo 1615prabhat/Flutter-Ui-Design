@@ -1,4 +1,5 @@
 import 'package:demo/Home.dart';
+import 'package:demo/rooms/CreateUser.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {
@@ -108,12 +109,29 @@ class LoginPage extends StatelessWidget {
               SizedBox(
                 height: 285,
               ),
-              Align(
-                alignment: Alignment.bottomCenter,
-                child: Text(
-                  "New User?Create Account",
-                  style: TextStyle(color: Colors.black87),
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Text(
+                      "New User?",
+                      style: TextStyle(color: Colors.black87),
+                    ),
+                  ),
+                  TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => CreateUser(),
+                            ));
+                      },
+                      child: Text(
+                        "create user",
+                        style: TextStyle(color: Colors.blue),
+                      ))
+                ],
               )
             ],
           ),

@@ -1,4 +1,6 @@
 import 'package:demo/rooms/BedRoom.dart';
+import 'package:demo/rooms/GuestRoom.dart';
+import 'package:demo/rooms/KidsRoom.dart';
 import 'package:demo/rooms/Kitchen.dart';
 import 'package:demo/rooms/LivingRoom.dart';
 import 'package:flutter/material.dart';
@@ -184,47 +186,56 @@ class _HomeState extends State<Home> {
                       ),
                     ),
                   ),
-                  Container(
-                    padding: const EdgeInsets.all(8),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        color: Colors.white),
-                    // child: Padding(
-                    //   padding: const EdgeInsets.only(left: 10),
-                    child: Column(
-                      children: [
-                        Text(
-                          'Guest Room',
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 22),
-                          child: Text(
-                            "The Guest room is available for guset to stay",
-                            style: TextStyle(
-                                fontSize: 10, color: Colors.grey[400]),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => GuestRoom(),
+                          ));
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5),
+                          color: Colors.white),
+                      // child: Padding(
+                      //   padding: const EdgeInsets.only(left: 10),
+                      child: Column(
+                        children: [
+                          Text(
+                            'Guest Room',
+                            style: TextStyle(fontWeight: FontWeight.bold),
                           ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(3.0),
-                          child: Text(
-                            "4 Devices",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.deepOrange),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 22),
+                            child: Text(
+                              "The Guest room is available for guset to stay",
+                              style: TextStyle(
+                                  fontSize: 10, color: Colors.grey[400]),
+                            ),
                           ),
-                        ),
-                        Switch(
-                          activeColor: Colors.deepOrange,
-                          value: light2,
-                          onChanged: (bool value) {
-                            // This is called when the user toggles the switch.
-                            setState(() {
-                              light2 = value;
-                            });
-                          },
-                        )
-                      ],
+                          Padding(
+                            padding: const EdgeInsets.all(3.0),
+                            child: Text(
+                              "4 Devices",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.deepOrange),
+                            ),
+                          ),
+                          Switch(
+                            activeColor: Colors.deepOrange,
+                            value: light2,
+                            onChanged: (bool value) {
+                              // This is called when the user toggles the switch.
+                              setState(() {
+                                light2 = value;
+                              });
+                            },
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                   InkWell(
@@ -279,47 +290,56 @@ class _HomeState extends State<Home> {
                       ),
                     ),
                   ),
-                  Container(
-                    padding: const EdgeInsets.all(8),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        color: Colors.white),
-                    // child: Padding(
-                    //   padding: const EdgeInsets.only(left: 10),
-                    child: Column(
-                      children: [
-                        Text(
-                          'Kids Room',
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 22),
-                          child: Text(
-                            "Here is The Kids Room were kids can play",
-                            style: TextStyle(
-                                fontSize: 10, color: Colors.grey[400]),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => KidsRoom(),
+                          ));
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5),
+                          color: Colors.white),
+                      // child: Padding(
+                      //   padding: const EdgeInsets.only(left: 10),
+                      child: Column(
+                        children: [
+                          Text(
+                            'Kids Room',
+                            style: TextStyle(fontWeight: FontWeight.bold),
                           ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Text(
-                            "4 Devices",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.deepOrange),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 22),
+                            child: Text(
+                              "Here is The Kids Room were kids can play",
+                              style: TextStyle(
+                                  fontSize: 10, color: Colors.grey[400]),
+                            ),
                           ),
-                        ),
-                        Switch(
-                          activeColor: Colors.deepOrange,
-                          value: light4,
-                          onChanged: (bool value) {
-                            // This is called when the user toggles the switch.
-                            setState(() {
-                              light4 = value;
-                            });
-                          },
-                        )
-                      ],
+                          Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Text(
+                              "4 Devices",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.deepOrange),
+                            ),
+                          ),
+                          Switch(
+                            activeColor: Colors.deepOrange,
+                            value: light4,
+                            onChanged: (bool value) {
+                              // This is called when the user toggles the switch.
+                              setState(() {
+                                light4 = value;
+                              });
+                            },
+                          )
+                        ],
+                      ),
                     ),
                   ),
                   Container(
@@ -387,8 +407,7 @@ class _HomeState extends State<Home> {
               icon: SizedBox.shrink(), // Empty space for floating button
               label: '',
             ),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.network_check), label: 'Network'),
+            BottomNavigationBarItem(icon: Icon(Icons.forum), label: 'Form'),
             BottomNavigationBarItem(
                 icon: Icon(Icons.settings), label: 'Settings'),
           ],

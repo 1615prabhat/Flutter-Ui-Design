@@ -34,13 +34,15 @@ class _BedRoomState extends State<BedRoom> {
                 height: 200,
                 width: double.infinity,
                 child: Padding(
-                  padding: const EdgeInsets.only(left: 25, top: 10, right: 5),
+                  padding: const EdgeInsets.only(left: 25, top: 5, right: 5),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Icon(
-                        Icons.arrow_back,
-                        color: Colors.white,
+                      IconButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        icon: Icon(Icons.arrow_back, color: Colors.white),
                       ),
                       SizedBox(
                         height: 20,

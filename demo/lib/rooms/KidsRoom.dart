@@ -2,14 +2,14 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-class LivingRoom extends StatefulWidget {
-  const LivingRoom({super.key});
+class KidsRoom extends StatefulWidget {
+  const KidsRoom({super.key});
 
   @override
-  State<LivingRoom> createState() => _LivingRoomState();
+  State<KidsRoom> createState() => _KidsRoomState();
 }
 
-class _LivingRoomState extends State<LivingRoom> {
+class _KidsRoomState extends State<KidsRoom> {
   bool light1 = true;
   bool light2 = true;
   bool light3 = true;
@@ -53,14 +53,14 @@ class _LivingRoomState extends State<LivingRoom> {
                     ),
                     SizedBox(height: 20),
                     Text(
-                      "Living Room ",
+                      "Kids Room ",
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 20,
                           fontWeight: FontWeight.bold),
                     ),
                     Text(
-                      "Living room is available and can consists of 50 members",
+                      "A room were kids have fun.",
                       style: TextStyle(color: Colors.white70),
                     ),
                     SizedBox(
